@@ -23,6 +23,9 @@ module type Graph =
 		val union: t -> t -> unit
 		val setState: t -> string -> state -> unit
 		val getState: t -> string -> state
+		(* ? *
+		val getVertex : t -> string -> vertex
+		* ? *)
 	end
 
 let top="{\"nodes\":["
@@ -116,69 +119,25 @@ module Make(Stat:State)	=
 	let setState g id s=
 		let (_,_,hs)=g in Hashtbl.add hs id s
 
-	
-	let vertex_to_gml v g=(* Here we use the value function in the state module to change states into int *)
-		(*"node [ id "^(fst v)^"  state "^(string_of_int (stateValue (getState g (fst v))))^"]" **)
-			"node [ id "^(fst v)^"]"
-	
-	let edge_to_gml v p ed g=
-		match ed with
-		|None -> ""
-		|Some e -> "edge [ source "^(fst v)^" target "^(fst e)^"]"
-	
-	let edges_to_gml v g=
-		let tab_edges=snd v
-		and str=ref "" in
-		for i=0 to (Array.length tab_edges) - 1 do
-				str:= !str^(edge_to_gml v i tab_edges.(i) g);
-		done; !str
-		
-	let export_gml g file_name=		
-		let top="graph ["
-		and middle=""
-		and bottom="]"
-		and oc = open_out file_name in
-		 	output_string oc top; (*  Header *)
-		 		let (_,vertex_table,_)=g in
-		 			let vertex_string= (* Fold over the vertices *)
-		 				Hashtbl.fold 
-		 				(fun name vertex buffer -> (vertex_to_gml vertex g)^buffer)
-		 				vertex_table
-		 				"" in 
-		 				if(String.length vertex_string > 0)then output_string oc (String.sub vertex_string 0 ((String.length vertex_string)- 1));
-		 				
-		 				
-		 	output_string oc middle;(* Middler *)
-		 		let (_,vertex_table,_)=g in (* Fold over the edges *)
-		 			let edges_string=
-		 				Hashtbl.fold 
-		 				(fun name vertex buffer -> (edges_to_gml vertex g)^buffer)
-		 				vertex_table
-		 				"" in 
-		 				if(String.length edges_string > 0)then output_string oc (String.sub edges_string 0 ((String.length edges_string)- 1));
-		 	
-		 	output_string oc bottom;(* Footer *)
-		 	
-		 	close_out oc
-		 
 
-	let vertex_to_json v g=(* Here we use the value function in the state module to change states into int *)
+
+	let vertex_to_string v g=(* Here we use the value function in the state module to change states into int *)
 		"{ \"name\":\""^(fst v)^"\",\"state\":"^(string_of_int (stateValue (getState g (fst v))))^"}," 
 		
 		
-	let edge_to_json v p ed g=
+	let edge_to_string v p ed g=
 		match ed with
 		|None -> ""
 		|Some e -> "{\"source\":\""^(fst v)^"\",\"target\":\""^(fst e)^"\",\"portIn\":"^(string_of_int (p))^",\"portOut\":"^(string_of_int (snd e))^"},"
 
-	let edges_to_json v g=
+	let edges_to_string v g=
 		let tab_edges=snd v
 		and str=ref "" in
 		for i=0 to (Array.length tab_edges) - 1 do
-				str:= !str^(edge_to_json v i tab_edges.(i) g);
+				str:= !str^(edge_to_string v i tab_edges.(i) g);
 		done; !str
 		
-	let export_json g file_name=		
+	let export g file_name=		
 		let top="{\"nodes\":["
 		and middle="],\"links\":["
 		and bottom="]}"
@@ -187,9 +146,9 @@ module Make(Stat:State)	=
 		 		let (_,vertex_table,_)=g in
 		 			let vertex_string= (* Fold over the vertices *)
 		 				Hashtbl.fold 
-		 				(fun name vertex buffer -> (vertex_to_json vertex g)^buffer)
+		 				(fun name vertex buffer -> (vertex_to_string vertex g)^buffer)
 		 				vertex_table
-		 				"" in 
+		 				"" in
 		 				if(String.length vertex_string > 0)then output_string oc (String.sub vertex_string 0 ((String.length vertex_string)- 1));
 		 				
 		 				
@@ -197,7 +156,7 @@ module Make(Stat:State)	=
 		 		let (_,vertex_table,_)=g in (* Fold over the edges *)
 		 			let edges_string=
 		 				Hashtbl.fold 
-		 				(fun name vertex buffer -> (edges_to_json vertex g)^buffer)
+		 				(fun name vertex buffer -> (edges_to_string vertex g)^buffer)
 		 				vertex_table
 		 				"" in 
 		 				if(String.length edges_string > 0)then output_string oc (String.sub edges_string 0 ((String.length edges_string)- 1));
