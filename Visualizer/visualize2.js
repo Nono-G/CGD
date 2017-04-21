@@ -28,9 +28,9 @@ function displayJSON(file){
 	var fr = new FileReader();
 	fr.onload = function(e) { 
 		var data = JSON.parse(e.target.result)
-		console.log(data)
+		//console.log(data)
 		display(data)
-	 }
+	}
 	fr.readAsText(file)
 }
 
@@ -146,9 +146,20 @@ function display(graph){
 }
 
 function displayPrevious(){
-	console.log("A");
+	if(file_current != null){
+		var f = document.getElementById("finput").value;
+		//graphe_stepXXX.json
+		//012345678901
+		var index = parseInt(f.substring(11,f.indexOf(".json")))-1;
+		if(index >= 0){
+			var newfilename = f.substring(0,11)+index+".json";
+			document.getElementById("finput").value = newfilename;
+		}
+	}
 }
 
 function displayNext(){
-	console.log("B");
+	if(file_current != null){
+		console.log(file_current.name);
+	}
 }

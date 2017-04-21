@@ -3,19 +3,22 @@ open Rule
 open RuleMovingHead
 open RuleTriangles
 open RuleBallHitting
+open RuleMeyer
 *)
-module CGD = RuleTriangles
+module CGD = RuleMeyer
 
 
 let _=
-	let init_graph=CGD.init_graph() in
+	let init_size = 400 in
+	let nb_steps = 1000 in
+	let init_graph=CGD.init_graph init_size in
 		print_string("Initial graph generated\n");
 		flush_all();
 		Rule.MyGraphs.export init_graph "Output/graphe_initial.json"; (* j'exporte le graphe initial dans le fichier graphe_initial.json *)	
 		print_string("Initial graph xported\n");
 		flush_all();
 		
-		for i=0 to 5 do (** /!\ 5 étapes c'est bien assez pour cette dynamique (croissance exponentielle du graphes /!\ **)
+		for i=0 to nb_steps do (** /!\ 5 étapes c'est bien assez pour cette dynamique (croissance exponentielle du graphes /!\ **)
 			print_string("Step "^(string_of_int i)^"\n");
 			flush_all();
 		

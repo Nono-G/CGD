@@ -6,14 +6,14 @@ open Rule
 module MyGraphs = Graph.Make(Rule.MyStates)
 
 (*Situation initiale pour BALL HITTING*)
-let init_graph () =
+let init_graph n =
 	let ng=MyGraphs.create () in
-	for i=0 to 4 do
+	for i=0 to n do
 		let nom = ("g"^(string_of_int i)) in
 		MyGraphs.addVertex ng (MyGraphs.createVertex nom);
 		MyGraphs.setState ng nom Rule.VERT;
 	done;
-	for i = 0 to 3 do
+	for i = 0 to (n-1) do
 		let n1 = ("g"^(string_of_int i)) in
 		let n2 = ("g"^(string_of_int (i+1))) in
 		MyGraphs.addEdge ng (n1,0) (n2,1);

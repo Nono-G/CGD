@@ -16,21 +16,20 @@ end*)
 module MyGraphs = Graph.Make(Rule.MyStates)
 
 (*Situation initiale pour Moving Head*)
-let init_graph () =
+let init_graph n =
 	let ng=MyGraphs.create () in
-	MyGraphs.addVertex ng (MyGraphs.createVertex "c1");
-	MyGraphs.addVertex ng (MyGraphs.createVertex "c2");
-	MyGraphs.addVertex ng (MyGraphs.createVertex "c3");
-	MyGraphs.addVertex ng (MyGraphs.createVertex "c4");
+	for i=1 to n do
+		let nom = ("c"^(string_of_int i)) in
+		MyGraphs.addVertex ng (MyGraphs.createVertex nom);
+		MyGraphs.setState ng nom Rule.(NOIR);
+	done;
+	for i=1 to (n-1) do
+		let nom1 = ("c"^(string_of_int i)) in
+		let nom2 = ("c"^(string_of_int (i+1))) in
+		MyGraphs.addEdge ng (nom1,0) (nom2,1);
+	done;
 	MyGraphs.addVertex ng (MyGraphs.createVertex "h");
-	MyGraphs.addEdge ng ("c1",0) ("c2",1);
-	MyGraphs.addEdge ng ("c2",0) ("c3",1);
-	MyGraphs.addEdge ng ("c3",0) ("c4",1);
 	MyGraphs.addEdge ng ("h",2) ("c1",2);
-	MyGraphs.setState ng "c1" Rule.(NOIR);
-	MyGraphs.setState ng "c2" Rule.(NOIR);
-	MyGraphs.setState ng "c3" Rule.(NOIR);
-	MyGraphs.setState ng "c4" Rule.(NOIR);
 	MyGraphs.setState ng "h" Rule.(BLANC);
 	(*retour -> *)ng;;
 

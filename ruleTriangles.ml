@@ -16,7 +16,7 @@ end
 (** J'utilise Graph.Make pour créer mon type de graphes dont les sommets ont MyStates comme états internes **)
 module MyGraphs = Graph.Make(MyStates)
 
-let init_graph () =
+let init_graph n =
 	let ng = MyGraphs.create() in
 	let vertex=Rule.MyGraphs.createVertex "toto" in
 	MyGraphs.addVertex ng vertex; (* Mon graphe initial: 1 sommet, nommé 'toto' *)

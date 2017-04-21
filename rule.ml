@@ -4,7 +4,7 @@ open Graph
 
 
 (** Le type des états internes des sommets **)
-type state= BLANC | NOIR | VERT | BLEU | ROUGE | JAUNE | ORANGE | CYAN(* blanc ou noir *)
+type state= BLANC | NOIR | VERT | BLEU | ROUGE | JAUNE | ORANGE | CYAN | VIOLET | FUCHSIA | MARRON | SAPIN | BORDEAUX | MARINE | PRUNE (* blanc ou noir *)
 
 module MyStates=
 struct
@@ -18,7 +18,14 @@ let value=(fun c-> match c with
 	| ROUGE -> 4
 	| JAUNE -> 5
 	| ORANGE -> 6
-	| CYAN -> 7) (* une fonction de state -> int pour l'export *)
+	| CYAN -> 7
+	| VIOLET -> 8
+	| FUCHSIA -> 9
+	| MARRON -> 10
+	| SAPIN -> 11
+	| BORDEAUX -> 12
+	| MARINE -> 13
+	| PRUNE -> 14) (* une fonction de state -> int pour l'export *)
 end
 
 
