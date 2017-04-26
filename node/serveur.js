@@ -31,12 +31,12 @@ app.get("/g/:n",function(req,res){
             n:req.params.n,
             positions:positions,
             posraw:"",
-            vr:10,
-            vc:-150,
-            el:15,
-            ew:8,
+            vr:6,
+            vc:-40,
+            el:10,
+            ew:4,
             automode:0,
-            amdelay:1000
+            amdelay:600
         });
     }
 });

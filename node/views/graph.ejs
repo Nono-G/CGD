@@ -84,12 +84,12 @@
 		</div>
 	</div>
 	<div class="corps">
-		<svg width="1600" height="850">
+		<svg width="1600" height="900">
 			<%for(var i =0; i < graph.links.length; i++){%>
-			<g class="link-g">
+			<g class="link-g" ind="<%=i%>">
 				<line class="link" src="<%=graph.links[i].source%>" dst="<%=graph.links[i].target%>"></line>
 				<text class="ltext" style="fill: White;" x="20" y="20">EDGE :
-					<tspan x="20" dy="1.2em"><(<%=graph.links[i].source%> : <%=graph.links[i].portIn%>) - (<%=graph.links[i].target%> : <%=graph.links[i].portOut%>)</tspan>
+					<tspan x="20" dy="1.2em">(<%=graph.links[i].source%> : <%=graph.links[i].portIn%>) - (<%=graph.links[i].target%> : <%=graph.links[i].portOut%>)</tspan>
 				</text>
 			</g>
 			<% } %>
