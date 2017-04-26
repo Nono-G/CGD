@@ -1,6 +1,6 @@
 
-main: main.ml rule.cmo graph.cmo ruleMovingHead.cmo ruleTriangles.cmo ruleBallHitting.cmo ruleMeyer.cmo
-	ocamlc graph.cmo rule.cmo ruleMovingHead.cmo ruleTriangles.cmo ruleBallHitting.cmo ruleMeyer.cmo main.ml -o main
+main: main.ml rule.cmo graph.cmo ruleMovingHead.cmo ruleTriangles.cmo ruleBallHitting.cmo ruleMeyer.cmo ruleMeyer2.cmo ruleMult.cmo ruleSorbetiere.cmo
+	ocamlc graph.cmo rule.cmo ruleMovingHead.cmo ruleTriangles.cmo ruleBallHitting.cmo ruleMeyer.cmo ruleMeyer2.cmo ruleMult.cmo ruleSorbetiere.cmo main.ml -o main
 
 ruleTriangles.cmo : graph.cmo rule.cmo ruleTriangles.ml
 	ocamlc graph.cmo rule.cmo ruleTriangles.ml
@@ -13,6 +13,15 @@ ruleBallHitting.cmo : graph.cmo rule.cmo ruleBallHitting.ml
 
 ruleMeyer.cmo : graph.cmo rule.cmo ruleMeyer.ml
 	ocamlc graph.cmo rule.cmo ruleMeyer.ml
+
+ruleMeyer2.cmo : graph.cmo rule.cmo ruleMeyer2.ml
+	ocamlc graph.cmo rule.cmo ruleMeyer2.ml
+
+ruleMult.cmo : graph.cmo rule.cmo ruleMult.ml
+	ocamlc graph.cmo rule.cmo ruleMult.ml
+
+ruleSorbetiere.cmo : graph.cmo rule.cmo ruleSorbetiere.ml
+	ocamlc graph.cmo rule.cmo ruleSorbetiere.ml
 
 rule.cmo:	graph.cmo rule.ml
 	ocamlc graph.cmo rule.ml
