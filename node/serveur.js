@@ -35,6 +35,7 @@ app.get("/g/:n",function(req,res){
             vc:-40,
             el:10,
             ew:4,
+            gv:0.01,
             automode:0,
             amdelay:600
         });
@@ -58,6 +59,7 @@ app.post("/g/:n", function(req,res){
             vc:req.body.vc,
             el:req.body.el,
             ew:req.body.ew,
+            gv:req.body.gv,
             automode:req.body.automode,
             amdelay:req.body.amdelay
         });

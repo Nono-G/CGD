@@ -48,12 +48,13 @@
 <body>
 	<div class="menu">
 		<div id="navigation">
-			<form name="previous" id="fprev" action="<%= parseInt(n)-1%>" method="post">
+			<form name="previous" id="fprev" action="<%= parseInt(n)-1%>" method="post" novalidate>
 				<input class="hidden" type="text" name="positions" id="pos_input_p" value="<%=posraw%>"/>
 				<input class="hidden" type="number" name="vr" id="vr_input_p" value="<%=vr%>" min="0"/>
 				<input class="hidden" type="number" name="ew" id="ew_input_p" value="<%=ew%>" min="0"/>
 				<input class="hidden" type="number" name="vc" id="vc_input_p" value="<%=vc%>"/>
 				<input class="hidden" type="number" name="el" id="el_input_p" value="<%=el%>" min="0"/>
+				<input class="hidden" type="number" name="gv" id="gv_input_p" value="<%=gv%>" min="0" step="any"/>
 				<input class="hidden" type="number" name="automode" id="automode_input_p" value="<%=automode%>" />
 				<input class="hidden" type="number" name="amdelay" id="ad_input_p" value="<%=amdelay%>" min="0"/>
 				<input type="submit" value="<<<"/>
@@ -64,6 +65,7 @@
 				<input class="hidden" type="number" name="ew" id="ew_input_n" value="<%=ew%>" min="0"/>
 				<input class="hidden" type="number" name="vc" id="vc_input_n" value="<%=vc%>"/>
 				<input class="hidden" type="number" name="el" id="el_input_n" value="<%=el%>" min="0"/>
+				<input class="hidden" type="number" name="gv" id="gv_input_n" value="<%=gv%>" min="0" step="any"/>
 				<input class="hidden" type="number" name="automode" id="automode_input_n" value="<%=automode%>" />
 				<input class="hidden" type="number" name="amdelay" id="ad_input_n" value="<%=amdelay%>" min="0"/>
 				<input type="submit" value=">>>"/>
@@ -74,6 +76,7 @@
 			<div>Edge width : <input type="number" id="ewinput" min="0" value="<%=ew%>" onchange="updatePostNumbers()" /></div>
 			<div>Vertex charge : <input type="number" id="vcinput" value="<%=vc%>" onchange="updatePostNumbers()" /></div>
 			<div>Edge length : <input type="number" id="elinput" min="0" value="<%=el%>" onchange="updatePostNumbers()" /></div>
+			<div>Gravity : <input type="number" id="gvinput" min="0" value="<%=gv%>" step="any" onchange="updatePostNumbers()" /></div>
 			<div><button onclick="layout()">Reload</button></div>
 			<div>Auto : <br>
 				Delay (ms) : <input type="number" id="adinput" min="0" value="<%=amdelay%>" onchange="updatePostNumbers()"/>

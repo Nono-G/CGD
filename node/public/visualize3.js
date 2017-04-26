@@ -24,7 +24,7 @@ function layout(){
 		.linkDistance(document.getElementById("elinput").value)
 		.size([1600, 900])
 		.alpha(0.001)
-		.gravity(0.01)
+		.gravity(document.getElementById("gvinput").value)
 		.nodes(nodes)
 		.links(links)
 		.start()
@@ -124,7 +124,6 @@ function toEdgeArray(lines, nodes){
 function updatePostNumbers(){
 	document.getElementById("vr_input_p").value = document.getElementById("vrinput").value;
 	document.getElementById("vr_input_n").value = document.getElementById("vrinput").value;
-	console.log("nono :");
 	document.getElementById("vc_input_p").value = document.getElementById("vcinput").value;
 	document.getElementById("vc_input_n").value = document.getElementById("vcinput").value;
 	document.getElementById("el_input_p").value = document.getElementById("elinput").value;
@@ -133,7 +132,9 @@ function updatePostNumbers(){
 	document.getElementById("ew_input_n").value = document.getElementById("ewinput").value;
 	document.getElementById("ad_input_p").value = document.getElementById("adinput").value;
 	document.getElementById("ad_input_n").value = document.getElementById("adinput").value;
-	console.log(document.getElementById("adinput").value);
+	document.getElementById("gv_input_p").value = document.getElementById("gvinput").value;
+	document.getElementById("gv_input_n").value = document.getElementById("gvinput").value;
+	//console.log(document.getElementById("adinput").value);
 }
 
 function toAutoMode0(){
