@@ -1,11 +1,11 @@
 //var couleurs2 =BLANC; NOIR; VERT; BLEU; ROUGE;
 //               JAUNE; ORANGE; CYAN; VIOLET; FUCHSIA;
 //               MARRON; SAPIN; BORDEAUX; MARINE; PRUNE;
-//				 GRIS;
+//				 GRIS; CIEL; ROSE; ANIS; LAVANDE;
 var couleurs2 = ["#ffffff", "#000000", "#00cc00", "#0000ff", "#cc0000",
 				 "#ffff00", "#ff6600", "#00ffff", "#660066", "#ff00ff",
 				 "#663300", "#003300", "#660000", "#00004d", "#330033",
-				 "4d4d4d"];
+				 "#4d4d4d", "#1a75ff", "#ff66cc", "#80ff00", "#9966ff"];
 //var ticks=0;
 function layout(){
 	var svg = d3.select("svg");
@@ -83,6 +83,7 @@ function toNodeArray(circles){
 			name:circles[i].getAttribute("name"),
 			state:circles[i].getAttribute("state"),
 			x:parseInt(circles[i].getAttribute("cx")),
+			//fixed:true,
 			y:parseInt(circles[i].getAttribute("cy"))
 		});
 		//console.log(i+" : "+nodeArray[i].name);

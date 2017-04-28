@@ -4,12 +4,15 @@ open Graph
 
 
 (** Le type des états internes des sommets **)
-type state= BLANC | NOIR | VERT | BLEU | ROUGE | JAUNE | ORANGE | CYAN | VIOLET | FUCHSIA | MARRON | SAPIN | BORDEAUX | MARINE | PRUNE | GRIS (* blanc ou noir *)
+type state= BLANC | NOIR | VERT | BLEU | ROUGE |
+			JAUNE | ORANGE | CYAN | VIOLET | FUCHSIA |
+			MARRON | SAPIN | BORDEAUX | MARINE | PRUNE |
+			GRIS | CIEL | ROSE | ANIS | LAVANDE (* blanc ou noir *)
 
 module MyStates=
 struct
 type t=state (* Les états internes *)
-let degree=4 (* On travaille sur des graphes de degré 4 *)
+let degree=5 (* On travaille sur des graphes de degré 4 *)
 let value=(fun c-> match c with
 	| BLANC -> 0
 	| NOIR -> 1
@@ -26,7 +29,13 @@ let value=(fun c-> match c with
 	| BORDEAUX -> 12
 	| MARINE -> 13
 	| PRUNE -> 14
-	| GRIS -> 15) (* une fonction de state -> int pour l'export *)
+	| GRIS -> 15
+	| CIEL -> 16 
+	| ROSE -> 17 
+	| ANIS -> 18
+	| LAVANDE -> 19
+	)
+(* une fonction de state -> int pour l'export *)
 end
 
 
