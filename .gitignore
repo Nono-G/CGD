@@ -1,7 +1,3 @@
-*.cmi
-*.cmo
-main
-a.out
-Output/*
-*~
-node/graphs/*
+cgdsim
+graphs/*
+simulateur/*.cm?
