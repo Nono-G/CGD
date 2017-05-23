@@ -1,0 +1,5 @@
+#!/bin/bash
+cd ./simulateur
+make
+mv cgdsim ../cgdsim
+cd ..

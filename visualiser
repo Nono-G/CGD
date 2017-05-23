@@ -1,0 +1,4 @@
+cd visualiseur
+gnome-terminal -e "node serveur.js" &
+cd ..
+sensible-browser http://localhost:8080/g/0 &
